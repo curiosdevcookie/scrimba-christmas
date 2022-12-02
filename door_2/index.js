@@ -1,4 +1,4 @@
-import data from "./data.js";
+import userData from "./data.js";
 
 /* Totally Private Data Farm 
 
@@ -25,39 +25,28 @@ Read about toDateString() for info on formatting a readable date.
 
 */
 
-// [
-//   {
-//     "name": {
-//       "title": "Mr",
-//       "first": "Levent",
-//       "last": "Busser"
-//     },
-//     "dob": {
-//       "date": "1971-08-21T01:08:00.099Z",
-//       "age": 51
-//     }
-//   }
-// ]
 
-function transformData(data) {
+function transformData(userData) {
 
-  // let [{ name { first: firstName, last: lastName }}] = data;
-  console.log(data);
+  const [{
+    name:
+    {
+      first: firstName,
+      last: lastName
+    },
+    dob:
+    { date
+    }
+  }
+  ] = userData;
 
   const fullName = `${firstName} ${lastName}`;
-  const birthday = dateToDateString(dob);
+  const birthday = new Date(date).toDateString();
 
   return {
-    fullName: fullName,
-    birthday: birthday
+    fullName,
+    birthday
   };
-};
+}
 
-
-
-
-
-console.log(transformData(userData));
-
-
-document.body.innerHTML = transformData(data);
+transformData(userData);
