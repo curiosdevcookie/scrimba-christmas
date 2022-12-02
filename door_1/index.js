@@ -5,6 +5,4 @@ function panic(string) {
   return newString;
 }
 
-console.log(panic(string));
-
 document.body.innerHTML = panic(string);
