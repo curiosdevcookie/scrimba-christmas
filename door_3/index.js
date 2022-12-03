@@ -22,4 +22,10 @@ const faveFoods = {
 
 const { breakfast, lunch, supper } = faveFoods;
 
-document.getElementById('meals').innerHTML = `For breakfast, I only like ${breakfast} ☕️. For lunch, I love ${lunch} 🍝, and for supper I usually eat the ${supper} left over from lunch 🤗.`;
+
+//Adding to the DOM;
+const mealParagraph = document.createElement('p')
+
+const mealNode = document.createTextNode(`For breakfast, I only like ${breakfast} ☕️. For lunch, I love ${lunch} 🍝, and for supper I usually eat the ${supper} left over from lunch 🤗.`);
+
+document.getElementById('meals').appendChild(mealNode);
