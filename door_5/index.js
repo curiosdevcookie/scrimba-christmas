@@ -43,4 +43,5 @@ const priceNode = document.createTextNode(string);
 document.getElementById('products').appendChild(priceNode);
 
 
+// document.getElementById('products').innerHTML = string;
 
