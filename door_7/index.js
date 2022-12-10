@@ -6,6 +6,7 @@ Example input: "I'm so happy it's Monday"
 Example output: "I'M So hApPy iT'S MoNdAy"
 */
 
+const str = "I'm so happy it's Monday";
 function altCaps(str) {
 
   let tempStr = str.split('');
@@ -16,9 +17,9 @@ function altCaps(str) {
   return tempStr.join('');
 }
 
-console.log(altCaps("I'm so happy it's Monday"));
+console.log(altCaps(str));
 
-document.body.innerHTML = altCaps("I'm so happy it's Monday!P");
+document.body.innerHTML = altCaps(str);
 
 //regex match letter: /[a-z]/i
 // && char.match(/[a-zA-Z]/g) !== 0 
