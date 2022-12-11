@@ -12,3 +12,5 @@ function sortByLength(strs) {
 
 console.log(strs);
 console.log(sortByLength(strs));
+
+document.body.innerHTML = sortByLength(strs);
