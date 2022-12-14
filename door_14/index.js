@@ -15,7 +15,10 @@ function countVowelConsonant(value) {
 
 console.log(countVowelConsonant(value));
 
+function addTextNode(fn) {
+  const textNode = document.createTextNode(countVowelConsonant(value));
+  document.body.appendChild(textNode);
+  document.body.style.fontSize = '3rem';
+}
 
-
-
-
+addTextNode(countVowelConsonant(value));
