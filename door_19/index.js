@@ -1,5 +1,5 @@
 function centuryFromYear(num) {
-  return Math.floor(num / 100) + (num % 100 === 0 ? 0 : 1);
+  return num >= 0 ? Math.ceil(num / 100) : Math.floor(num / 100);
 }
 
-document.body.innerHTML = centuryFromYear(1900);
+document.body.innerHTML = centuryFromYear(-1905);
