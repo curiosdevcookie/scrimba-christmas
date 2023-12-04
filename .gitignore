@@ -1,2 +1,8 @@
 # OS specific stuff
 .DS_Store
+
+# envs
+.env
+
+# node_modules
+node_modules/
