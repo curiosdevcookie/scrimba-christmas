@@ -1,2 +1,5 @@
 # OS specific stuff
 .DS_Store
+
+# envs
+.env
