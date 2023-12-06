@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secret Santa</title>
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
   </head>
     <body>
       <h2>Secret Santa Pairs</h2>
+      <form method="post">
+        <input id="names" type="text" placeholder="Enter names separated by commas">
+        <button type="button" onclick="fetchAndWriteNames()">Submit</button>
+        <button type="reset">Reset</button>
+      </form>
       <ul id="pairs"></ul>
     </body>
 </html>
