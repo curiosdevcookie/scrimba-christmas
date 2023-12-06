@@ -8,11 +8,18 @@
   </head>
     <body>
       <h2>Secret Santa Pairs</h2>
-      <form method="post">
+      <dialog id="inputDialog">
+        <h4>Enter names for Secret Santa</h4>
+      <form method="dialog">
         <input id="names" type="text" placeholder="Enter names separated by commas">
-        <button type="button" onclick="fetchAndWriteNames()">Submit</button>
+        <button id="closeDialog" type="button" onclick="fetchAndWriteNames()">Submit</button>
         <button type="reset">Reset</button>
       </form>
+      
+      </dialog>
+
+      <button type="button">Add Names!</button>
+
       <ul id="pairs"></ul>
     </body>
 </html>

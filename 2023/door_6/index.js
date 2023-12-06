@@ -5,6 +5,10 @@
 
 function fetchAndWriteNames() {
   const namesInput = document.getElementById('names').value;
+  if (namesInput === "") {
+    alert("Please enter names 🙂");
+    return;
+  }
   const people = namesInput.split(',').map(name => name.trim());
   writeInHTML(people);
 }
@@ -66,3 +70,15 @@ function formattedPairPeople(arr) {
   }, {});
   return formattedPairs;
 }
+
+// Dialog elements
+const dialog = document.getElementById("inputDialog");
+const showButton = document.querySelector("dialog + button");
+const closeButton = document.getElementById("closeDialog");
+showButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
