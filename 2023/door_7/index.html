@@ -7,14 +7,21 @@
     <script src="index.js" defer></script>
     <link rel="stylesheet" href="index.css">
   </head>
-    <body>
-      <h2>Wishlist</h2>
-
-      <h4>Enter your wishlist</h4>
-      <form>
-        <input id="inputWishlist" type="text" placeholder="Please enter an item for your wishlist">
-        <button type="button" onclick="fetchAndWriteList();">Add to Wishlist!</button>
-      </form>
-
-      <ul id="wishlistItems"></ul>
+  <body>
+    <main>
+      <section id='wishlistControls'>
+        <form>
+          <label for="inputWishlist" >Add an item to your wishlist:</label>
+          <input id="inputWishlist" type="text" placeholder="Please enter an item">
+          <button type="button" onclick="fetchAndWriteList();">Add to Wishlist!</button>
+        </form>
+      </section>
+      
+      <section id='wishlistData'>
+        <div id="backgroundImage">
+          <ul id="wishlistItems"></ul>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
