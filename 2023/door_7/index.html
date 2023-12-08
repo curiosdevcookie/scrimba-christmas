@@ -10,7 +10,7 @@
   <body>
     <main>
       <section id='wishlistControls'>
-        <form>
+        <form id='wishlistForm'>
           <label for="inputWishlist" >Add an item to your wishlist:</label>
           <input id="inputWishlist" type="text" placeholder="Please enter an item">
           <button type="button" onclick="fetchAndWriteList();">Add to Wishlist!</button>
@@ -18,8 +18,9 @@
       </section>
       
       <section id='wishlistData'>
-        <div id="backgroundImage">
+        <div id="parchmentContainer">
           <ul id="wishlistItems"></ul>
+          <img src="./images/parchment.svg" alt="old comic parchment">
         </div>
       </section>
     </main>

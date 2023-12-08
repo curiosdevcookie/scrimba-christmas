@@ -42,11 +42,11 @@ function appendToList(arr) {
   return wishlistItems;
 }
 
+// Use enter for adding an item to list
+document.getElementById("inputWishlist").addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    fetchAndWriteList();
+  }
+});
 
-
-
-/** Challenge: 
-  - Iterate over the wishlist array.
-  - Dynamically render your wishlist from the array.
-  - Style the wishlist with CSS.
-**/
