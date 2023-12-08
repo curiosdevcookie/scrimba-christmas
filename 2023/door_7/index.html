@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+    <main>
+      <section id='wishlistControls'>
+        <form id='wishlistForm'>
+          <label for="inputWishlist" >Add an item to your wishlist:</label>
+          <input id="inputWishlist" type="text" placeholder="Please enter an item">
+          <button type="button" onclick="fetchAndWriteList();">Add to Wishlist!</button>
+        </form>
+      </section>
+      
+      <section id='wishlistData'>
+        <div id="parchmentContainer">
+          <ul id="wishlistItems"></ul>
+          <img src="./images/parchment.svg" alt="old comic parchment">
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

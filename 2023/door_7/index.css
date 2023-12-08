@@ -1,0 +1,135 @@
+:root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 62.5%;
+
+  /* Festive colors: */
+  --color-red: #f00;
+  --color-green: darkgreen;
+  --color-gold: #ff0;
+  --color-silver: #ccc;
+  --color-blue: darkblue;
+  --color-white: #fff;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main */
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "left right";
+  height: 100%;
+  width: 100%;
+  place-items: center;
+}
+
+/* Media query: */
+@media (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+    grid-template-areas: "left" "right";
+  }
+}
+
+#wishlistControls {
+  grid-area: right;
+  background: var(--color-green);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+#wishlistData {
+  grid-area: left;
+  background-image: url("./images/winter_landscape.png");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+form {
+  padding: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: calc(1rem + 1vw);
+}
+
+/* Small stylings */
+
+input::placeholder {
+  color: var(--color-green);
+  font-size: calc(1rem + 0.2vw);
+}
+
+input {
+  border-radius: 0.5rem;
+  border: 0.2rem solid var(--color-green);
+  padding: 1rem;
+  height: calc(1rem + 1vw);
+  width: calc(10rem + 10vw);
+}
+
+/* Label only visible for screen readers */
+label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+#parchmentContainer {
+  position: relative;
+  height: auto;
+  display: block;
+}
+
+#parchmentContainer img {
+  width: calc(30rem + 10vw);
+  height: auto;
+  display: block;
+}
+
+#wishlistItems {
+  position: absolute;
+  top: calc(5rem + 5vw);
+  left: calc(3rem + 5vw);
+  list-style: none;
+  color: var(--color-blue);
+  font-size: calc(1.8rem + 1vw);
+  font-weight: bold;
+  text-align: left;
+  height: 50vh;
+  width: 50vw;
+  z-index: 1;
+}
+
+button {
+  background: transparent;
+  border: 0.2rem solid var(--color-white);
+  border-radius: 0.5rem;
+  color: var(--color-white);
+  font-size: calc(0.8rem + 1vw);
+  height: calc(1.5rem + 2vw);
+  white-space: nowrap;
+}
