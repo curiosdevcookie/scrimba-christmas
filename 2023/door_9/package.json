@@ -1,8 +1,11 @@
 {
   "name": "project",
+  "type": "module",
   "dependencies": {
-    "openai": "4.19.0",
-    "@huggingface/inference": "2.6.1"
+    "@huggingface/inference": "2.6.1",
+    "dotenv": "^16.3.1",
+    "express": "^4.17.1",
+    "openai": "4.19.0"
   },
   "devDependencies": {
     "vite": "latest"
