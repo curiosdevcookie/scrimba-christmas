@@ -4,8 +4,8 @@ body {
   background-color: deepskyblue;
   --color-white: #fff;
   --color-red: #ff0002;
-  --flag-height: 90rem;
-  --flag-width: 90rem;
+  --flag-height: 120rem;
+  --flag-width: 120rem;
 }
 
 .white {
@@ -25,7 +25,7 @@ figure {
 }
 
 figcaption {
-  font-size: 1rem;
+  font-size: calc(var(--flag-height) / 70);
   font-weight: bold;
   white-space: nowrap;
   color: var(--color-white);
