@@ -26,17 +26,15 @@ app.use(express.json());
 app.post('/generate-image', async (req, res) => {
   try {
     const { prompt } = req.body;
-    const result = await generateImage(prompt);
-    res.setHeader('Content-Type', 'image/jpeg');
-    console.log('Blob Backend:', result);
-    res.send(result);
+    const imageBuffer = await generateImage(prompt);
 
+    res.setHeader('Content-Type', 'image/jpeg');
+    res.end(imageBuffer, 'binary');
   } catch (error) {
     console.error('Error in /generate-image endpoint:', error);
     res.status(500).send({ error: error.message });
   }
 });
-
 
 
 const PORT = process.env.PORT || 3000;

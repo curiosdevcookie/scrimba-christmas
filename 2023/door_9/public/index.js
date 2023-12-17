@@ -1,6 +1,3 @@
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
   const dialogModal = document.getElementById('dialog-modal');
   const imageContainer = document.getElementById('image-container');
@@ -11,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     dialogModal.close();
 
-    const prompt = userInput.value;
+    const prompt = `Please return an image with aspect-ratio of 1:1 of ${userInput.value}`;
 
     try {
       const response = await fetch('/generate-image', {
@@ -20,27 +17,38 @@ document.addEventListener('DOMContentLoaded', () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ prompt }),
+
       });
 
-      // convert response to base64 string:
-      console.log('Response:', response);
       const blob = await response.blob();
-      console.log('Blob Frontend:', blob);
-      const reader = new FileReader();
-      console.log('Reader:', reader);
-      reader.readAsDataURL(blob);
-      reader.onloadend = () => {
-        const base64String = reader.result;
-        console.log('Base64 String:', base64String);
-        imageContainer.innerHTML = `<img src=${base64String} alt=${prompt}/>`;
-      };
+      if (blob.size <= 2) {
+        throw new Error('Blob size is too small, likely not an image.');
+      }
+
+      const image = await blobToImage(blob);
+      console.log(image);
+
+      imageContainer.innerHTML = `<img src="${image.src}"  alt="${userInput.value}"/>`;
+
     } catch (error) {
       console.error('Error in /generate-image endpoint:', error);
     }
-  }
-  );
-
+  });
 
   dialogModal.show();
+
 });
 
+function blobToImage(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      const image = new Image();
+      image.src = reader.result;
+      image.onload = () => resolve(image);
+      image.onerror = reject;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
