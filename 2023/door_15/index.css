@@ -1,6 +1,59 @@
 :root {
-    --black: #282828; 
-    --blue: #2892f9; 
-    --red: #fb2f27;
-    --yellow: #fdfe29;
+  --color-ring-1: #282828;
+  --color-ring-2: #2892f9;
+  --color-ring-3: #fb2f27;
+  --color-bullseye: #fdfe29;
+
+  --size-bullseye: 30rem;
+}
+
+.bullseye {
+  border-radius: 50% 50%;
+  width: var(--size-bullseye);
+  height: var(--size-bullseye);
+  background: radial-gradient(
+    circle at center,
+    var(--color-bullseye),
+    var(--color-bullseye) 12%,
+    var(--color-ring-3) 12%,
+    var(--color-ring-3) 30%,
+    var(--color-ring-2) 30%,
+    var(--color-ring-2) 50%,
+    var(--color-ring-1) 50%
+  );
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bullseye:hover::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50% 50%;
+  background: radial-gradient(
+    circle at center,
+    var(--color-bullseye),
+    var(--color-bullseye) 12%,
+    var(--color-ring-3) 12%,
+    var(--color-ring-3) 30%,
+    var(--color-ring-2) 30%,
+    var(--color-ring-2) 50%,
+    var(--color-ring-1) 50%
+  );
+  animation: ripple 2s;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
 }
