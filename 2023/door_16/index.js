@@ -6,81 +6,62 @@ const sorteesArr = [
   {
     name: "David",
     hasBeenGood: false,
-    id: generateID()
+
   },
   {
     name: "Nellie",
     hasBeenGood: true,
-    id: generateID()
+
   },
   {
     name: "Valerie",
     hasBeenGood: false,
-    id: generateID()
+
   },
   {
     name: "Astrid",
     hasBeenGood: true,
-    id: generateID()
-  }
-]
 
-console.log("sorteesArr", sorteesArr);
+  }
+];
 
 const niceList = document.getElementById("nice-list")
 const naughtyList = document.getElementById("naughty-list")
 const btn = document.getElementById("btn")
-btn.addEventListener("click", add)
+btn.addEventListener("click", addPerson)
 
-function add() {
-  // only add if the ID is not already in the array:
-
-
-  addPerson();
+function addPerson() {
+  addPersonToArray();
   sort(sorteesArr);
 }
 
 function sort(arr) {
+  document.getElementById("nice-list").innerHTML = '';
+  document.getElementById("naughty-list").innerHTML = '';
 
-  const people = sorteesArr.map(person => {
-    return person.hasBeenGood ? document.getElementById("nice-list").innerHTML += `<li>${person.name}</li>` : document.getElementById("naughty-list").innerHTML += `<li>${person.name}</li>`;
+  arr.forEach((person) => {
+    const li = document.createElement("li");
+    li.innerText = person.name;
+
+    if (person.hasBeenGood) {
+      niceList.appendChild(li);
+    } else {
+      naughtyList.appendChild(li);
+    }
   });
 }
 
-
-function addPerson() {
+function addPersonToArray() {
   const person = document.getElementById("person").value;
   const hasBeenGood = document.getElementById("has-been-good").checked;
-  const newPerson = {
-    name: person,
-    hasBeenGood: hasBeenGood,
-    id: generateID()
+  const personExists = sorteesArr.some(p => p.name === person && p.hasBeenGood === hasBeenGood);
+
+  if (!personExists) {
+    const newPerson = {
+      name: person,
+      hasBeenGood: hasBeenGood,
+    }
+    sorteesArr.push(newPerson);
   }
-
-  const ids = sorteesArr.map(person => person.id);
-  if (ids.includes(newPerson.id)) {
-    alert("This person is already in the list!");
-    return;
-  }
-
-
-  sorteesArr.push(newPerson);
-  document.getElementById("person").value = "";
-  document.getElementById("has-been-good").checked = false;
-  document.getElementById("person");
+  return sorteesArr;
 }
-
-// Helper functions
-function generateID() {
-  return Math.floor(Math.random() * 100000000000000);
-}
-
-
-/** Challenge: 
-  - Write the JavaScript to sort the people in sorteesArr into the naughty and nice lists, according to whether they have been good or not. Then display the names in the relevant place in the DOM.
-**/
-
-/** Stretch goals:
-  - Add the option to add new names to the sorteesArr.
-  - Make it possible to switch people to the other list.
-**/
