@@ -23,9 +23,7 @@ const sorteesArr = [
     hasBeenGood: true,
 
   }
-]
-
-console.log("sorteesArr", sorteesArr);
+];
 
 const niceList = document.getElementById("nice-list")
 const naughtyList = document.getElementById("naughty-list")
@@ -35,11 +33,9 @@ btn.addEventListener("click", addPerson)
 function addPerson() {
   addPersonToArray();
   sort(sorteesArr);
-  console.log("sorteesArr", sorteesArr);
 }
 
 function sort(arr) {
-
   document.getElementById("nice-list").innerHTML = '';
   document.getElementById("naughty-list").innerHTML = '';
 
@@ -67,6 +63,5 @@ function addPersonToArray() {
     }
     sorteesArr.push(newPerson);
   }
-
   return sorteesArr;
 }
