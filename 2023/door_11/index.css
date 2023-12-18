@@ -1,0 +1,32 @@
+:root,
+html,
+body {
+  background-color: deepskyblue;
+  --color-white: #fff;
+  --color-red: #ff0002;
+  --flag-height: 120rem;
+  --flag-width: 120rem;
+}
+
+.white {
+  background-color: var(--color-white);
+}
+
+.red {
+  background-color: var(--color-red);
+}
+
+figure {
+  display: grid;
+  grid-template-columns: 6% 7% 6% 7% 6%;
+  grid-template-rows: 6% 7% 6% 7% 6%;
+  height: var(--flag-height);
+  width: var(--flag-width);
+}
+
+figcaption {
+  font-size: calc(var(--flag-height) / 70);
+  font-weight: bold;
+  white-space: nowrap;
+  color: var(--color-white);
+}

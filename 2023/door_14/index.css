@@ -1,0 +1,66 @@
+:root {
+  --wine-red: #c7375f;
+  --bright-red: #d42d2f;
+  --dark-green: #344d2f;
+  --light-green: #77a047;
+  --gold: #fac57d;
+  --snow: #f0f4f7;
+  --elf-size: 4rem;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  color: var(--dark-green);
+  background-color: var(--snow);
+}
+
+.elf-hangout-zone {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(auto-fill, var(--elf-size));
+  gap: 1rem;
+  place-items: center;
+  width: 30rem;
+  height: 30rem;
+  overflow-y: scroll;
+  background: var(--wine-red);
+  padding: 1rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+h1 {
+  margin: 0;
+}
+
+.elf {
+  font-size: var(--elf-size);
+}
+
+button {
+  padding: 1em 2em;
+  border: none;
+  font-size: 1.2rem;
+  background-color: var(--dark-green);
+  color: var(--snow);
+  border-radius: 999px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.03);
+}
