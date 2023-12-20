@@ -29,7 +29,7 @@ function handleGuess(e) {
 
   /* bugs begin 🦠*/
   let currentState = []
-  let input = document.getElementById('users-input')
+  let input = document.getElementById('user-input')
   let guess = input.id
   const guessArr = guess.split(' ')
   wordArr.foreach((letter) => {
