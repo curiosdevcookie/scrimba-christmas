@@ -20,6 +20,13 @@ addButtonEl.addEventListener("click", function () {
   }
 })
 
+// Also add a keyup event listener to the input field:
+inputFieldEl.addEventListener("keyup", function (event) {
+  if (event.key === "Enter") {
+    addButtonEl.click()
+  }
+})
+
 function renderList(array) {
   clearPeopleListEl()
 
@@ -53,9 +60,14 @@ function appendPersonToPeopleListEl(person) {
     renderList(people)
 
     const imagePreview = document.getElementById("image-preview");
-    imagePreview.src = "https://i.gifer.com/tiJ.gif";
-    imagePreview.style.height = "100%";
-    imagePreview.style.width = "100%";
+
+    if (imagePreview) {
+      imagePreview.src = "https://i.gifer.com/tiJ.gif";
+      imagePreview.style.height = "100%";
+    }
+    else {
+      console.log("no image preview");
+    }
 
   })
 
