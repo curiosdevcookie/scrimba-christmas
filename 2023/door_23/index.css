@@ -46,16 +46,17 @@ body {
 #toggle:checked {
   transform: translateX(1.5rem);
   transition: transform 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 #toggle {
   transform: translateX(0);
   transition: transform 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 #toggle {
   position: absolute;
   opacity: 0;
   z-index: 1;
-  cursor: pointer;
 }
