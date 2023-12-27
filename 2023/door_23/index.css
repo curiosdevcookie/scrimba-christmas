@@ -14,12 +14,14 @@ body {
   display: grid;
   place-items: center;
   height: 100vh;
+  background: darkkhaki;
 }
 
 .toggle-wrap {
   background: var(--toggle-bg);
   border: var(--toggle-border) 0.1rem solid;
   border-radius: 1rem;
+  padding: 0.05rem;
   width: 2.5rem;
 }
 
@@ -55,4 +57,5 @@ body {
   position: absolute;
   opacity: 0;
   z-index: 1;
+  cursor: pointer;
 }
