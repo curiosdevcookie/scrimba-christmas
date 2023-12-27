@@ -21,25 +21,19 @@ function renderGuess(arr) {
 
 function handleGuess(e) {
   e.preventDefault()
-  /**
-   * Debug Challenge:
-   * 1. There are loads of problems with the 
-   *    code below. Find them and fix them!
-   **/
 
-  /* bugs begin 🦠*/
   let currentState = []
   let input = document.getElementById('user-input')
-  let guess = input.id
+  let guess = input.value
   const guessArr = guess.split(' ')
-  wordArr.foreach((letter) => {
-    if (letter === guessArr['']) {
+  wordArr.forEach((letter) => {
+    if (letter === guessArr[0]) {
       currentState.push(letter)
     } else {
       currentState.push(letter)
     }
   })
-  /* bugs end 🦠*/
+
   renderGuess(currentState)
   checkWin(guess)
   input.value = ''
