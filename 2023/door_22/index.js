@@ -51,6 +51,12 @@ function appendPersonToPeopleListEl(person) {
     localStorage.setItem("people", JSON.stringify(people));
 
     renderList(people)
+
+    const imagePreview = document.getElementById("image-preview");
+    imagePreview.src = "https://i.gifer.com/tiJ.gif";
+    imagePreview.style.height = "100%";
+    imagePreview.style.width = "100%";
+
   })
 
   peopleListEl.append(newEl)
