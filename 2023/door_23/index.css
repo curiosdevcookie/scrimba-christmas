@@ -1,0 +1,62 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --toggle-switch-bg: #232428;
+  --toggle-border: #232428;
+  --toggle-bg: #fff;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background: darkkhaki;
+}
+
+.toggle-wrap {
+  background: var(--toggle-bg);
+  border: var(--toggle-border) 0.1rem solid;
+  border-radius: 1rem;
+  padding: 0.05rem;
+  width: 2.5rem;
+}
+
+#toggle:checked + #toggle-switch {
+  background: var(--toggle-switch-bg);
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  transform: translateX(1.5rem);
+  transition: transform 0.2s ease-in-out;
+}
+
+#toggle + #toggle-switch {
+  background: var(--toggle-switch-bg);
+  border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  transform: translateX(0);
+  transition: transform 0.2s ease-in-out;
+}
+
+#toggle:checked {
+  transform: translateX(1.5rem);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+#toggle {
+  transform: translateX(0);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+#toggle {
+  position: absolute;
+  opacity: 0;
+  z-index: 1;
+}
