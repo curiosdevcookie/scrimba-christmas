@@ -30,16 +30,19 @@ const listArr = []
 
 // Function to check item is not duplicate
 function checkDuplicate() {
+  const itemText = itemInput.value.trim()
+  if (!itemText) {
+    alert('Please enter an item')
+    return
+  }
+  
+  const normalizedText = itemText.replace(/\s\s+/g, ' ')
 
-  const itemText = itemInput.value
-
-  const trimmedItemText = itemText.replace(/\s\s+/g, ' ')
-
-  if (listArr.includes(trimmedItemText)) {
+  if (listArr.some(item => item.toLowerCase() === normalizedText.toLowerCase())) {
     alert('This item is already in the list')
     return
   }
-  listArr.push(trimmedItemText)
+  listArr.push(normalizedText)
   renderList()
 }
 
