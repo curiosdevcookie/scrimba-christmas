@@ -1,6 +1,6 @@
 # Advent calendar
 
-This is an implementation of [JavaScriptmas](https://scrimba.com/learn/javascriptmas).
+This is an implementation of a few years of [JavaScriptmas](https://scrimba.com/learn/javascriptmas).
 
 ## Nice Christmas colours
 
@@ -14,3 +14,12 @@ This is an implementation of [JavaScriptmas](https://scrimba.com/learn/javascrip
   --snow: #f0f4f7;
 }
 ```
+
+## To run the different doors
+
+```zsh
+npm install -g http-server
+http-server
+```
+
+Then open the provided URL (e.g., http://localhost:8080) in your web browser to see the different doors running.
