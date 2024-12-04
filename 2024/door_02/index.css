@@ -101,11 +101,7 @@ h1, h2 {
 }
 
 .card-backside {
-  background: linear-gradient(
-    135deg,
-    var(--color-primary),
-    var(--color-secondary)
-  );
+  background: var(--dark-green);
   border: 0.7rem solid var(--bright-red);
   width: 13.6rem;
 }
