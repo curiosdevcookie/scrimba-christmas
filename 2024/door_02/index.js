@@ -16,9 +16,11 @@ for (let i = 1; i <= 24; i++) {
   let number = document.createElement('p');
   number.classList.add('number');
   number.textContent = i;
+  number.setAttribute('aria-label', `Day ${i} of advent calendar`);
 
   const icon = document.createElement('i');
   icon.classList.add('fas', 'fa-gift');
+  icon.setAttribute('aria-hidden', 'true');
 
   // Append elements in the correct order
   cardBack.appendChild(number);
