@@ -17,9 +17,18 @@ This is an implementation of a few years of [JavaScriptmas](https://scrimba.com/
 
 ## To run the different doors
 
+### Options
+
 ```zsh
 npm install -g http-server
 http-server
 ```
 
 Then open the provided URL (e.g., http://localhost:8080) in your web browser to see the different doors running.
+
+```zsh
+yarn add vite --dev
+yarn start
+```
+
+Then open the provided URL (e.g., http://localhost:3000) in your web browser to see the different doors running.
