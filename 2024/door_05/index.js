@@ -10,22 +10,26 @@ and filter out any pairs that aren’t actually anagrams.
 
 For this challenge, spaces will be ignored, so "Be The Helm" would 
 be considered a valid anagram of "Bethlehem".
-*/ 
+*/
 
 let anagrams = [
-    ["Can Assault", "Santa Claus"],
-    ["Refreshed Erudite Londoner", "Rudolf the Red Nose Reindeer"],
-    ["Frosty The Snowman", "Honesty Warms Front"],
-    ["Drastic Charms", "Christmas Cards"],
-    ["Congress Liar", "Carol Singers"],
-    ["The Tin Glints", "Silent Night"],
-    ["Be The Helm", "Betlehem"],
-    ["Is Car Thieves", "Christmas Eve"]
+  ["Can Assault", "Santa Claus"],
+  ["Refreshed Erudite Londoner", "Rudolf the Red Nose Reindeer"],
+  ["Frosty The Snowman", "Honesty Warms Front"],
+  ["Drastic Charms", "Christmas Cards"],
+  ["Congress Liar", "Carol Singers"],
+  ["The Tin Glints", "Silent Night"],
+  ["Be The Helm", "Betlehem"],
+  ["Is Car Thieves", "Christmas Eve"]
 ];
 
-function findAnagrams(array){
-    // write your code here
+function findAnagrams(array) {
+  return array.filter(pair => {
+    const first = pair[0].toLowerCase().split("").sort().join("").replace(/\s/g, "");
+    const second = pair[1].toLowerCase().split("").sort().join("").replace(/\s/g, "");
+    return first === second;
+  });
 }
+console.log(findAnagrams(anagrams));
 
 
- 
