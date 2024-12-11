@@ -87,6 +87,8 @@ function handleWin() {
   Array.from(snowmanParts).forEach(part => {
     part.style.display = 'block'
   })
+
+  refreshGame()
 }
 
 function removeSnowmanPart(guesses) {
@@ -113,12 +115,15 @@ function handleLoss() {
   const guessContainer = document.getElementById('guess-container')
   guessContainer.innerHTML = 'You Lose!'
 
-  // refresh the page
-  setTimeout(() => {
-    location.reload()
-  }, 1000)
+  refreshGame()
 }
 
+function refreshGame() {
+  setTimeout(() => {
+    location.reload()
+  }, 1500)
+  console.log("Refreshing game...")
+}
 
 renderKeyboard()
 start(word)
