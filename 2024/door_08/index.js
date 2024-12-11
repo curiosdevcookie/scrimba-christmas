@@ -1,6 +1,9 @@
 // The keyboard has been rendered for you
-import { renderKeyboard } from '/keyboard'
+import { renderKeyboard } from './keyboard.js'
+import { renderGuess, start } from './starter.js'
+
 document.getElementById('keyboard-container').addEventListener('click', checkGuess)
+
 
 // Some useful elements
 const guessContainer = document.getElementById('guess-container')
@@ -34,8 +37,46 @@ const word = "gift"
 let guesses = 6
 
 
-function checkGuess() {
-    
+function checkGuess(event) {
+
+  const letter = getLetter(event)
+  console.log("Guessed letter:", letter);
+  console.log("Word:", word);
+
+  const isIncluded = word.includes(letter)
+  console.log(isIncluded)
+  if (isIncluded) {
+    console.log("Letter is in the word")
+    // Replace the dash with the letter
+    replaceDashWithLetter(letter)
+  } else {
+    console.log("Letter is not in the word")
+    // Remove a part of the snowman
+    removeSnowmanPart()
+    guesses--
+  }
 }
 
+function getLetter(event) {
+  if (!event.target.matches('button.letter')) return;
+  const letter = event.target.id
+  const button = event.target;
+
+  button.disabled = true;
+  console.log(letter)
+  return letter;
+}
+
+function replaceDashWithLetter(letter) {
+
+
+}
+
+function removeSnowmanPart() {
+
+}
+
+console.log(replaceDashWithLetter(word, 'i')) // returns - i - -
+
 renderKeyboard()
+start()
