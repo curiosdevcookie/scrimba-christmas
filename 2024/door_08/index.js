@@ -1,6 +1,6 @@
 // The keyboard has been rendered for you
 import { renderKeyboard } from './keyboard.js'
-import { renderGuess, start } from './starter.js'
+import { renderGuess, start, guessArr } from './starter.js'
 
 document.getElementById('keyboard-container').addEventListener('click', checkGuess)
 
@@ -32,7 +32,7 @@ Challenge
 */
 
 // Set the word to guess
-const word = "gift"
+export const word = "gift"
 // 6 guesses for the 6 parts of the snowman
 let guesses = 6
 
@@ -40,6 +40,7 @@ let guesses = 6
 function checkGuess(event) {
 
   const letter = getLetter(event)
+  if (!letter) return;
   console.log("Guessed letter:", letter);
   console.log("Word:", word);
 
@@ -47,13 +48,10 @@ function checkGuess(event) {
   console.log(isIncluded)
   if (isIncluded) {
     console.log("Letter is in the word")
-    // Replace the dash with the letter
-    replaceDashWithLetter(letter)
+    replaceDashWithLetter(letter, word)
   } else {
     console.log("Letter is not in the word")
-    // Remove a part of the snowman
-    removeSnowmanPart()
-    guesses--
+    guesses = removeSnowmanPart(guesses)
   }
 }
 
@@ -67,16 +65,60 @@ function getLetter(event) {
   return letter;
 }
 
-function replaceDashWithLetter(letter) {
+function replaceDashWithLetter(letter, word) {
+  // Update the guessArr based on the letter position(s)
+  for (let i = 0; i < word.length; i++) {
+    if (word[i] === letter) {
+      guessArr[i] = letter
+    }
+  }
 
+  renderGuess()
 
+  if (!guessArr.includes('-')) {
+    handleWin()
+  }
 }
 
-function removeSnowmanPart() {
-
+function handleWin() {
+  const guessContainer = document.getElementById('guess-container')
+  guessContainer.innerHTML = 'You Win!'
+  const snowmanParts = document.getElementsByClassName('snowman-part')
+  Array.from(snowmanParts).forEach(part => {
+    part.style.display = 'block'
+  })
 }
 
-console.log(replaceDashWithLetter(word, 'i')) // returns - i - -
+function removeSnowmanPart(guesses) {
+  const snowmanParts = document.getElementsByClassName('snowman-part');
+
+  const index = snowmanParts.length - guesses;
+  console.log("Guesses left:", guesses);
+  console.log("Removing part at index:", index);
+
+  if (snowmanParts[index]) {
+    snowmanParts[index].style.display = 'none';
+  }
+
+  guesses--;
+
+  if (guesses === 0) {
+    handleLoss();
+  }
+
+  return guesses;
+}
+
+function handleLoss() {
+  const guessContainer = document.getElementById('guess-container')
+  guessContainer.innerHTML = 'You Lose!'
+
+  // refresh the page
+  setTimeout(() => {
+    location.reload()
+  }, 1000)
+}
+
 
 renderKeyboard()
-start()
+start(word)
