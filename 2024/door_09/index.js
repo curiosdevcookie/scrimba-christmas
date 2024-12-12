@@ -73,8 +73,19 @@ console.log(likedRecipesNames);
 // Step 2: Output the suitable recipes
 
 const recipesList = document.getElementById('recipesList');
+if (!recipesList) {
+  console.error('Recipe list element not found');
+  return;
+}
+
+// Clear existing items
+recipesList.innerHTML = '';
+
+// Use DocumentFragment for better performance
+const fragment = document.createDocumentFragment();
 likedRecipesNames.forEach(recipe => {
   const li = document.createElement('li');
   li.textContent = recipe;
-  recipesList.appendChild(li);
+  fragment.appendChild(li);
 });
+recipesList.appendChild(fragment);
