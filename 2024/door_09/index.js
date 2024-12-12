@@ -73,10 +73,6 @@ console.log(likedRecipesNames);
 // Step 2: Output the suitable recipes
 
 const recipesList = document.getElementById('recipesList');
-if (!recipesList) {
-  console.error('Recipe list element not found');
-  return;
-}
 
 // Clear existing items
 recipesList.innerHTML = '';
