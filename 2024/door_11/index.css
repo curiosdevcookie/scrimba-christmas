@@ -20,20 +20,64 @@ h1 {
 }
 
 .card {
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: darkgreen;
-    color: white;
-    font-size: 2rem;
-    cursor: pointer;
-    border-radius: 8px;
+  width: 100px;
+  height: 100px;
+  perspective: 1000px;
+  cursor: pointer;
 }
 
-.card.revealed {
-    background-color: #fff;
-    color: black;
-    cursor: default;
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.card.revealed .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-backside {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.card-front {
+  background-color: white;
+  transform: rotateY(180deg);
+}
+
+.card-backside {
+  background-color: darkgreen;
+}
+
+#play-again {
+  padding: 10px 20px;
+  color: darkred;
+  border: solid 1px darkred;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+h4 {
+  color: darkgreen;
+}
+
+.you-win {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
