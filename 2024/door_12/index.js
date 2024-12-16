@@ -31,60 +31,73 @@ const hiddenRatingInput = document.getElementById('hidden-rating');
 let currentRating = 0;
 
 stars.forEach((star, index) => {
-    // Handle click
-    star.addEventListener('click', () => {
-        setRating(index + 1);
-    });
+  // Handle click
+  star.addEventListener('click', () => {
+    setRating(index + 1);
+  });
 
-    // Handle keyboard navigation
-    star.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            setRating(index + 1);
-        } else if (e.key === 'ArrowRight') {
-            const next = stars[index + 1];
-            if (next) next.focus();
-        } else if (e.key === 'ArrowLeft') {
-            const prev = stars[index - 1];
-            if (prev) prev.focus();
-        }
-    });
+  // Handle keyboard navigation
+  star.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      setRating(index + 1);
+    } else if (e.key === 'ArrowRight') {
+      const next = stars[index + 1];
+      if (next) next.focus();
+    } else if (e.key === 'ArrowLeft') {
+      const prev = stars[index - 1];
+      if (prev) prev.focus();
+    }
+  });
 });
 
 function setRating(rating) {
-    currentRating = rating;
+  rating = parseInt(rating);
+  if (isNaN(rating) || rating < 1 || rating > 5) return;
 
-    // Update hidden input value
-    hiddenRatingInput.value = rating;
+  currentRating = rating;
+  hiddenRatingInput.value = rating;
 
-    // Update star appearance
-    stars.forEach((star, index) => {
-        star.setAttribute('aria-checked', index < rating ? 'true' : 'false');
-        star.tabIndex = index + 1 === rating ? 0 : -1;
-    });
+  stars.forEach((star, index) => {
+    star.setAttribute('aria-checked', index < rating ? 'true' : 'false');
+    star.tabIndex = index + 1 === rating ? 0 : -1;
+  });
 
-    console.log(`Rated ${rating} star(s)`);
+  console.log(`Rated ${rating} star(s)`);
 }
 
+
 document.addEventListener('submit', (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    // Get the selected rating from the hidden input
-    const ratingValue = hiddenRatingInput.value;
-    let stars = [];
-    if (ratingValue) {
-        for (let i = 0; i < ratingValue; i++) {
-            stars.push('<span class="review-star">★</span>');
-        }
+  const ratingValue = hiddenRatingInput.value;
+  let stars = [];
+  if (ratingValue && !isNaN(ratingValue) && ratingValue > 0 && ratingValue <= 5) {
+    for (let i = 0; i < ratingValue; i++) {
+      stars.push('<span class="review-star">★</span>');
     }
+  }
 
-    const textArea = document.getElementById('text-area')
-    const text = textArea.value;
-    const textDisp = document.getElementById('text-output');
-    textDisp.innerHTML += `<p>${stars.join(' ')} ${text}</p>`;
-    textArea.value = ''
+  const textArea = document.getElementById('text-area');
+  const text = sanitizeInput(textArea.value);
+  const textDisp = document.getElementById('text-output');
+  textDisp.innerHTML += `<p>${stars.join(' ')} ${text}</p>`;
+  textArea.value = '';
 });
 
 
-document.getElementById('prod-buy').addEventListener('click', function(){
-    console.log('Product added to basket.')
-})
+document.getElementById('prod-buy').addEventListener('click', function (e) {
+  e.preventDefault();
+  alert('Product added to basket.');
+});
+
+function sanitizeInput(input) {
+  return input.replace(/[&<>"']/g, function (match) {
+    return {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[match];
+  });
+}
