@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Santa's Merch Store</title>
+	<link rel="stylesheet" href="index.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+	 rel="stylesheet">
+</head>
+
+<body>
+	<h1 id="title">Santa's Merch Store 🎅</h1>
+	<main>
+		<section>
+			<div class="product-card-left">
+				<h2 class="prod-title">Lazy Santa Hoodie</h2>
+				<img class="prod-img" src="/images/santa-hoodie.png" alt="Red Hoodie with Santa in shorts lounging on a deckchair">
+				<p class="prod-desc">100% reindeer wool. Hand-crafted by elves in a cave in Barbados.</p>
+				<button class="prod-btn" id="prod-buy" aria-label="Buy Lazy Santa Hoodie">Buy</button>
+			</div>
+			<div class="product-card-right">
+				<form class="prod-form">
+					<input type="hidden" name="rating" id="hidden-rating" value="0">
+					<label class="form-label" for="text-area">Leave a review</label>
+					<textarea id="text-area" class="form-textarea" placeholder="It's delightful!"></textarea>
+                    <p id="rating-label" class="sr-only">Rate this product 1-5 stars:</p>
+					<div class="star-review">
+						<div class="stars" role="radiogroup" aria-labelledby="rating-label">
+							<ul>
+								<li role="radio" aria-checked="false" tabindex="0" data-value="1" aria-label="1 star">★</li>
+								<li role="radio" aria-checked="false" tabindex="-1" data-value="2" aria-label="2 stars">★</li>
+								<li role="radio" aria-checked="false" tabindex="-1" data-value="3" aria-label="3 stars">★</li>
+								<li role="radio" aria-checked="false" tabindex="-1" data-value="4" aria-label="4 stars">★</li>
+								<li role="radio" aria-checked="false" tabindex="-1" data-value="5" aria-label="5 stars">★</li>
+							</ul>
+						</div>
+					</div>
+					<button type="submit" class="form-btn">Submit review</button>
+				</form>
+				<div class="text-output" id="text-output" role="log" aria-live="polite">
+					<p>
+						<span class="review-star">★</span>
+						<span class="review-star">★</span>
+						<span class="review-star">★</span>
+						<span class="review-star">★</span>
+						<span class="review-star">★</span> So soft!
+					</p>
+					<p>
+						<span class="review-star">★</span> Reindeer wool is itchy!
+					</p>
+				</div>
+			</div>
+		</section>
+	</main>
+	<script type="module" src="index.js"></script>
+</body>
+
+</html>
