@@ -50,21 +50,15 @@ document.getElementById('billForm').addEventListener('submit', function (e) {
   const billInput = document.getElementById('billInput');
   const billValue = parseInt(billInput.value);
 
-  // Check if a valid number is selected
-  if (billValue) {
-    const successMessage = "Nice job Santa, everyone got their correct change!";
-    const failureMessage = "Looks like you have some work to do Santa, and bring some money next time!";
+  const successMessage = "Nice job Santa, everyone got their correct change!";
+  const failureMessage = "Looks like you have some work to do Santa, and bring some money next time!";
 
-    const messageBox = correctChangeFromSanta(billValue);
-    const messageBoxText = messageBox ? successMessage : failureMessage;
-    document.getElementById('message-box').textContent = messageBoxText;
-    updatePurseStatus();
-  } else {
-    // Clear the message if no valid option is selected
-    document.getElementById('message-box').textContent = '';
-  }
+  const messageBox = correctChangeFromSanta(billValue);
+  const messageBoxText = messageBox ? successMessage : failureMessage;
+  document.getElementById('message-box').textContent = messageBoxText;
+  updatePurseStatus();
 
-  billInput.value = ''; // Reset the select element to the default option
+  billInput.value = '';
 });
 
 document.getElementById('billForm').addEventListener('submit', function (e) {
