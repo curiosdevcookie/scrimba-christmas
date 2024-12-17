@@ -79,3 +79,39 @@ document.getElementById('billForm').addEventListener('submit', function (e) {
 });
 
 updatePurseStatus();
+
+
+
+
+// TEST CASES
+console.log("Test case 1:");
+if (correctChangeFromSanta([5, 5, 5, 10, 20])) {
+  console.log("Nice job Santa, everyone got their correct change!")
+} else {
+  console.log("Looks like you have some work to do Santa, and bring some money next time!")
+}
+
+console.log("\nTest case 2:");
+if (correctChangeFromSanta([5, 5, 10, 10, 20])) {
+  console.log("Nice job Santa, everyone got their correct change!")
+} else {
+  console.log("Looks like you have some work to do Santa, and bring some money next time!")
+}
+
+console.log("\nTest case 3:");
+if (correctChangeFromSanta([5, 5, 5, 20])) {
+  console.log("Nice job Santa, everyone got their correct change!")
+} else {
+  console.log("Looks like you have some work to do Santa, and bring some money next time!")
+}
+
+console.log("\nTest case 4:");
+if (correctChangeFromSanta([10, 10])) {
+  console.log("Nice job Santa, everyone got their correct change!")
+} else {
+  console.log("Looks like you have some work to do Santa, and bring some money next time!")
+}
+
+// Final purse update
+console.log("\nSanta's final purse:");
+console.log(`$5: ${santasPurse.get(5)}, $10: ${santasPurse.get(10)}, $20: ${santasPurse.get(20)}`);
