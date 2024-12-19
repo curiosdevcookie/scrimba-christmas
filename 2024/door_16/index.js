@@ -11,7 +11,7 @@ This code should:
  - Compare the aggregated counts with toysMade to determine discrepancies.
 But it doesn't!
 
-Your task: debug this code - there are two bugs to find! 
+Your task: debug this code - there are two bugs to find!
 
 Stretch Goal
 
@@ -21,10 +21,10 @@ Stretch Goal
 
 // Function to find the elf who created more presents than they delivered
 function findNaughtyElf(data) {
-  const naughtyElves = []
+  const naughtyElves = [];
 
   data.forEach((elf) => {
-    const totalShipped = {}
+    const totalShipped = {};
 
     // Recursive function to sum toy counts
     function sumToys(shipmentData) {
@@ -33,26 +33,30 @@ function findNaughtyElf(data) {
         if (Array.isArray(subRegion)) {
           // If it's an array, sum toy counts
           subRegion.forEach(({ toy, count }) => {
-            totalShipped[toy] = (totalShipped[toy] || 0) + count
-          })
-        } else {
+            totalShipped[toy] = (totalShipped[toy] || 0) + count;
+          });
+        } else if (typeof subRegion === 'object') {
           // If it's an object, recurse further
-          sumToys(region)
+          sumToys(subRegion);
         }
       }
     }
 
     // Calculate total toys shipped
-    sumToys(elf)
+    sumToys(elf.toysShipped)
 
     // Compare toysMade to totalShipped
+    let isNaughty = false;
     for (const toy in elf.toysMade) {
       if (elf.toysMade[toy] > (totalShipped[toy] || 0)) {
-        naughtyElves.push(elf.name)
-        break
+        isNaughty = true;
+        break;
       }
     }
-  })
+    if (isNaughty) {
+      naughtyElves.push(elf.name);
+    }
+  });
 
   return naughtyElves.join(', ')
 }
