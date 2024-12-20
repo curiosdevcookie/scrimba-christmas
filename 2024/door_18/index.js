@@ -19,9 +19,15 @@ Expected output: 559.93
 - Use the reduce() method to complete this challenge.
 */
 
-function calculateCost(arr){
-    // Your code here!
+function calculateCost(arr) {
+
+  const costOfShopping = arr
+    .filter(item => item.isGift)
+    .reduce((acc, item) => acc + item.price, 0);
+
+  return Math.round(costOfShopping * 100) / 100;
 }
+
 
 console.log(calculateCost(shoppingCartData)) //559.93 
 
