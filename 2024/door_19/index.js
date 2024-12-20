@@ -20,13 +20,15 @@ const listByCheapest = sortProducts(shoppingList);
 
 
 const shoppingListDisplay = document.querySelector("#shopping-list");
+if (!shoppingListDisplay) {
+  throw new Error('Shopping list element not found');
+}
 
 shoppingList.forEach((item) => {
   const listItem = document.createElement("li");
-  listItem.textContent = `${item.product}: $${item.price}`;
+  listItem.textContent = `${item.product}: $${item.price.toFixed(2)}`;
   shoppingListDisplay.appendChild(listItem);
-}
-);
+});
 
 const sortButton = document.getElementById("sortPrices");
 
