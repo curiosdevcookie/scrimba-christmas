@@ -33,16 +33,16 @@ generateButton.addEventListener('click', () => {
 });
 
 function getInitialFirst(firstName) {
-  return firstName[0];
+  return firstName[0].toLowerCase();
 }
 
 function getInitialLast(lastName) {
-  return lastName[0];
+  return lastName[0].toLowerCase();
 }
 
 function matches(firstName, lastName) {
-  const elfFirstName = elfFirstNames.find(name => name[0] === getInitialFirst(firstName));
-  const elfLastName = elfLastNames.find(name => name[0] === getInitialLast(lastName));
+  const elfFirstName = elfFirstNames.find(name => name[0].toLowerCase() === getInitialFirst(firstName));
+  const elfLastName = elfLastNames.find(name => name[0].toLowerCase() === getInitialLast(lastName));
   const elfName = `${elfFirstName} ${elfLastName}`;
   return elfName;
 }
