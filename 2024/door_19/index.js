@@ -30,17 +30,25 @@ shoppingList.forEach((item) => {
   shoppingListDisplay.appendChild(listItem);
 });
 
-const sortButton = document.getElementById("sortPrices");
-
-sortButton.addEventListener("click", () => {
-  const sortedList = sortProducts(shoppingList);
+function renderList(items) {
   shoppingListDisplay.innerHTML = "";
-  sortedList.forEach((item) => {
+  items.forEach((item) => {
     const listItem = document.createElement("li");
-    listItem.textContent = `${item.product}: $${item.price}`;
+    listItem.textContent = `${item.product}: $${item.price.toFixed(2)}`;
     shoppingListDisplay.appendChild(listItem);
   });
+}
 
+const sortButton = document.getElementById("sortPrices");
+if (!sortButton) {
+  throw new Error('Sort button not found');
+}
+
+sortButton.addEventListener("click", () => {
+  sortButton.disabled = true;
+  const sortedList = sortProducts(shoppingList);
+  renderList(sortedList);
+  sortButton.disabled = false;
 });
 
 /**
