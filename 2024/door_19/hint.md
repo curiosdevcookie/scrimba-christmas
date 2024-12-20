@@ -1,0 +1,2 @@
+- Look at the examples on the MDN Web Docs for how to sort items in an array
+- Remember, your shopping list is an array of objects, not just numbers.
