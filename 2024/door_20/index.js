@@ -13,6 +13,47 @@ const elfLastNames = [
   "Yuletide", "Zestwind"
 ];
 
+const Form = document.getElementById('form');
+
+const generateButton = document.getElementById('generate-btn');
+
+generateButton.addEventListener('click', () => {
+  const firstName = document.getElementById('first-name').value;
+  const lastName = document.getElementById('last-name').value;
+
+  console.log(firstName);
+  console.log(lastName);
+
+  const elfName = matches(firstName, lastName);
+
+  console.log(elfName);
+  renderElfName(elfName);
+  return elfName;
+
+});
+
+function getInitialFirst(firstName) {
+  return firstName[0];
+}
+
+function getInitialLast(lastName) {
+  return lastName[0];
+}
+
+function matches(firstName, lastName) {
+  const elfFirstName = elfFirstNames.find(name => name[0] === getInitialFirst(firstName));
+  const elfLastName = elfLastNames.find(name => name[0] === getInitialLast(lastName));
+  const elfName = `${elfFirstName} ${elfLastName}`;
+  return elfName;
+}
+
+function renderElfName(elfName) {
+  const elfList = document.getElementById('elf-names-list');
+  const firstLi = elfList.firstElementChild;
+  const newLi = document.createElement('li');
+  newLi.textContent = elfName;
+  elfList.replaceChild(newLi, firstLi);
+}
 
 /*
  * 🎅 Task:
@@ -26,4 +67,4 @@ const elfLastNames = [
  * - Generate the elf names using an LLM API (like HuggingFace). 
  * - Don't save the same name twice. (not necessary for the normal task)
  * - Make sure to use Scrimba's environment variables feature so you don't expose your API key 
- */ 
+ */
