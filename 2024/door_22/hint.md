@@ -1,0 +1,3 @@
+- You will need to iterate over the data and ignore elements that do not have the isOnChristmaslist boolean set to true.
+- Generate HTML for each one.
+- Then it’s all down to your design/CSS skills!
