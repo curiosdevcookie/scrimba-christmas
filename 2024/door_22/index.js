@@ -14,3 +14,20 @@ But not all of your contacts are on your Christmas list. So your task is this:
 */
 
 const labelsContainer = document.querySelector('.labels-container')
+
+const isOnChristmasList = addresses.filter(address => address.isOnChristmasList === true)
+isOnChristmasList.forEach(({ name, ["address line 1"]: addressLine1, town, state, country }) => {
+  const label = document.createElement('div')
+  label.innerHTML = `
+    <article class="dashed-cut-line">
+      <div class="label">
+        <h2>${name}</h2>
+        <p>${addressLine1}</p>
+        <p>${town}</p>
+        <p>${state}</p>
+        <p>${country}</p>
+      </div >
+    </article>
+  `
+  labelsContainer.appendChild(label)
+})
