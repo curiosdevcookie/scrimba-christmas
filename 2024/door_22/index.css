@@ -54,15 +54,16 @@ main {
 }
 
 .dashed-cut-line {
-    border: 3px dashed black;
-    padding: 4rem;
+  border: 3px dashed black;
+  padding: 4rem;
+  position: relative;
 }
 
 .dashed-cut-line::before {
-    content: '✁';
-    font-size: 2.5rem;
-    position: absolute;
-    top: 0;
+  content: '✁';
+  font-size: 2.5rem;
+  position: absolute;
+  top: -2rem;
 }
 
 
