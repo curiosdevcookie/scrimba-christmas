@@ -14,13 +14,11 @@ No stretch goal for the final day. Just stretch your legs!
 
 
 // Convert binary to base10:
-
 function binaryToBase10(binary) {
   return parseInt(binary, 2);
 }
 
 // Convert base10 to ASCII:
-
 function base10ToASCII(base10) {
   return String.fromCharCode(base10);
 }
